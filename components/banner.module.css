@@ -1,0 +1,117 @@
+.container {
+  margin-bottom: 6rem;
+}
+
+.title {
+  letter-spacing: -0.025em;
+  font-weight: 800;
+  color: var(--text-black);
+
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.title span:first-child {
+  color: rgba(249, 250, 251, 1);
+}
+.title span:last-child {
+  display: block;
+  color: var(--text-purple);
+}
+
+.subtitle {
+  margin-top: 0.75rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
+
+  color: var(--text-white-100);
+}
+
+.container button {
+  background-color: var(--text-purple-dark);
+  cursor: pointer;
+  color: white;
+  border: 0px;
+
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.container button:hover {
+    background-color: var(--text-purple-dark);
+}
+
+
+@media (min-width: 640px) {
+    .title {
+      font-size: 3rem /* 48px */;
+      line-height: 1;
+    }
+  
+    .subtitle {
+      margin-top: 1.25rem;
+      max-width: 36rem;
+    }
+  
+    .buttonWrapper {
+      display: flex;
+      margin-top: 2rem;
+    }
+  }
+  
+  /** md breakpoint **/
+  @media (min-width: 768px) {
+    .title {
+      font-size: 3.75rem /* 60px */;
+      line-height: 1;
+    }
+  
+    .subtitle {
+      margin-top: 1.25rem;
+    }
+  
+    .container button {
+      padding-top: 1rem /* 16px */;
+      padding-bottom: 1rem /* 16px */;
+      font-size: 1.125rem /* 18px */;
+      line-height: 1.75rem /* 28px */;
+      padding-left: 2.5rem /* 40px */;
+      padding-right: 2.5rem /* 40px */;
+    }
+  }
+  
+  /** lg breakpoint **/
+  @media (min-width: 1024px) {
+    .container {
+      text-align: left;
+    }
+  
+    .title {
+      font-size: 4.5rem /* 72px */;
+      line-height: 1;
+    }
+  
+    .title span:last-child {
+      padding-left: 0.5rem;
+    }
+  
+    .subtitle {
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+  
+    .buttonWrapper {
+      justify-content: flex-start;
+    }
+  }
+  
+  /** xl breakpoint **/
+  @media (min-width: 1280px) {
+    .title span:last-child {
+      display: inline;
+    }
+  }
