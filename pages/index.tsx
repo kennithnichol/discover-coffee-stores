@@ -14,7 +14,9 @@ const Home: NextPage = () => {
 
 			<main className={styles.main}>
 				<Banner buttonText="View nearby stores" />
-				<Image src="/hero-image.png" width={700} height={400} />
+				<div className={styles.heroImage}>
+					<Image src="/vercel.svg" width={700} height={400} />
+				</div>
 			</main>
 		</div>
 	);
