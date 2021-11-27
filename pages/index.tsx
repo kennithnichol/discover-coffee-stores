@@ -3,9 +3,18 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Banner from '../components/banner';
 import Card from '../components/card';
+
 import styles from '../styles/Home.module.css';
 
-const Home: NextPage = () => {
+import coffeeStores from '../data/coffee-stores.json';
+
+export async function getStaticProps() {
+	return {
+		props: { coffeeStores },
+	};
+}
+
+const Home: NextPage = (props) => {
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -19,11 +28,14 @@ const Home: NextPage = () => {
 					<Image src="/vercel.svg" width={700} height={400} />
 				</div>
 				<div className={styles.cardLayout}>
-					<Card
-						name="DarkHorse Coffee"
-						imgUrl="/vercel.svg"
-						href="/coffee-store/darkhorse-coffee"
-					/>
+					{coffeeStores.map((coffeeStore) => (
+						<Card
+							key={coffeeStore.id}
+							name={coffeeStore.name}
+							imgUrl={coffeeStore.imgUrl}
+							href={`/coffee-store/${coffeeStore.id}`}
+						/>
+					))}
 				</div>
 			</main>
 		</div>
