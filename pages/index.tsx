@@ -6,18 +6,22 @@ import Card from "../components/card";
 
 import styles from "../styles/Home.module.css";
 
-import coffeeStoresData from "../data/coffee-stores.json";
+import { CoffeeStore, fetchCoffeeStores } from "../lib/coffee-stores";
 
 export async function getStaticProps() {
-  const paths = coffeeStoresData.map((coffeeStore) => {
-    return {
-      params: { id: coffeeStore.id.toString() },
-    };
-  });
-  return paths;
+  const coffeeStores = await fetchCoffeeStores();
+  return {
+    props: {
+      coffeeStores,
+    },
+  };
 }
 
-const Home: NextPage = (props) => {
+type Props = {
+  coffeeStores: CoffeeStore[];
+};
+
+const Home: NextPage<Props> = (props) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -32,14 +36,17 @@ const Home: NextPage = (props) => {
         </div>
         {props.coffeeStores.length > 0 && (
           <>
-            <h2 className={styles.heading2}>Toronto Stores</h2>
+            <h2 className={styles.heading2}>Comox Valley Stores</h2>
             <div className={styles.cardLayout}>
-              {props.coffeeStores.map((coffeeStore) => (
+              {props.coffeeStores.map((coffeeStore: CoffeeStore) => (
                 <Card
-                  key={coffeeStore.id}
+                  key={coffeeStore.fsq_id}
                   name={coffeeStore.name}
-                  imgUrl={coffeeStore.imgUrl}
-                  href={`/coffee-store/${coffeeStore.id}`}
+                  imgUrl={
+                    coffeeStore.imgUrl ||
+                    "https://images.unsplash.com/photo-1504753793650-d4a2b783c15e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80"
+                  }
+                  href={`/coffee-store/${coffeeStore.fsq_id}`}
                 />
               ))}
             </div>
